@@ -24,13 +24,11 @@ python analise_dados.py e aguarde alguns minutos
 import csv
 import os.path
 import shutil
-import subprocess
 from glob import glob
-from os import path, makedirs
+from os import path
 
 import pandas as pd
 from bs4 import BeautifulSoup as bs
-
 
 BASE_DIR = path.dirname(path.abspath(__file__))
 del_data = path.join(BASE_DIR, 'del_data')
@@ -68,7 +66,7 @@ def get_dir():
     # Getting the list of file in directory
     dired = []
     for item in glob('*'):
-        if item.endswith('.csv') or item.endswith('.txt'):
+        if item.endswith('.csv'):
             dired.append(item)
 
     return dired
