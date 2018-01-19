@@ -25,11 +25,12 @@ import csv
 import os.path
 import shutil
 from glob import glob
-from os import path
+from os import path, name
 
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 
+# Directory Support
 BASE_DIR = path.dirname(path.abspath(__file__))
 del_data = path.join(BASE_DIR, 'del_data')
 gen_data = path.join(BASE_DIR, 'gen_data')
@@ -40,6 +41,15 @@ folder_base = [
     path.join(BASE_DIR, 'rel_log'),
     path.join(BASE_DIR, 'clean_data')
 ]
+
+def get_os():
+    os_system = None
+    if 'posix' in os.name:
+        os_system = 'utf-8'
+        return os_system
+    else:
+        os_system = 'mbcs'
+        return os_system
 
 
 def del_or_create():
@@ -84,7 +94,7 @@ def create_log():
         with open(file, encoding='utf-8') as file_parse:
             csv_reader = csv.reader(file_parse)
 
-            with open(file_data, mode='w', newline='', encoding='mbcs') as new_file:
+            with open(file_data, mode='w', newline='', encoding=get_os()) as new_file:
                 csv_writer = csv.writer(new_file)
 
                 csv_writer.writerow(('NOME', 'CONTEUDO'))
@@ -97,10 +107,8 @@ def create_log():
 
                     csv_writer.writerow([l, line[4].upper()])
 
-
     print('Log 1 Gerado com Sucesso')
     print('Gerando Proximo Log, Aguarde...')
-
 
     for entry in f_open:
         file = entry
@@ -108,28 +116,25 @@ def create_log():
         log_table = path.join(gen_data, 'gen_{}'.format(file))
         log_pivot = path.join(rel_data, 'rel_{}'.format(file))
 
-        with open(file_data, mode='r' ,encoding='mbcs') as pdf:
+        with open(file_data, mode='r' ,encoding=get_os()) as pdf:
             pd_file = pd.read_csv(pdf)
             df = pd_file.groupby(['NOME','CONTEUDO'])['CONTEUDO'].count()
 
-            df.to_csv(log_table, sep=',', encoding='mbcs', header=True)
-
+            df.to_csv(log_table, sep=',', encoding=get_os(), header=True)
 
     print('Log 2 Gerado Com Sucesso')
     print('Gerando Proximo Log, Aguarde....')
 
-
     for entry in f_open:
         file = entry
         file_data = path.join(del_data, 'del_{}'.format(file))
         log_table = path.join(gen_data, 'gen_{}'.format(file))
         log_pivot = path.join(rel_data, 'rel_{}'.format(file))
 
-        with open(log_table, mode='r' ,encoding='mbcs') as pdf:
+        with open(log_table, mode='r' ,encoding=get_os()) as pdf:
             pivot = pd.read_csv(pdf)
             df = pivot.pivot_table(columns=['CONTEUDO'], index=['NOME'])
-            df.to_csv(log_pivot, header=True, encoding='mbcs')
-
+            df.to_csv(log_pivot, header=True, encoding=get_os())
 
     print('Arquivos Gerados com Sucesso, Verifique a pasta {}'.format(gen_data))
 
