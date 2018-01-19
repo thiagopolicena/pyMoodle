@@ -18,6 +18,8 @@ coloque o arquivo dentro da pasta que tenha todos os arquivos csv ou txt
 python analise_dados.py e aguarde alguns minutos
 
 """
+# ^[ \t\v]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)
+
 import csv
 import os.path
 import shutil
