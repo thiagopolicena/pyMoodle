@@ -1,4 +1,5 @@
 """
+Author: Marcelo Marcon - marconm.inf0@gmail.com
 Versao 1.0.1 ### 01/2018
 Gerador de Log para o portal Moodle
 O log ira preservar apenas duas colunas, Como Nome e Conteudo
