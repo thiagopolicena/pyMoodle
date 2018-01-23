@@ -121,6 +121,10 @@ def create_log():
             df = pd_file.groupby(['NOME','CONTEUDO'])['CONTEUDO'].count()
 
             df.to_csv(log_table, sep=',', encoding=get_os(), header=True)
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6b92d9246988ce4bb42d75c6d07d4045bd6fce1
 
     print('Log 2 Gerado Com Sucesso')
     print('Gerando Proximo Log, Aguarde....')
@@ -135,6 +139,10 @@ def create_log():
             pivot = pd.read_csv(pdf)
             df = pivot.pivot_table(columns=['CONTEUDO'], index=['NOME'])
             df.to_csv(log_pivot, header=True, encoding=get_os())
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6b92d9246988ce4bb42d75c6d07d4045bd6fce1
 
     print('Arquivos Gerados com Sucesso, Verifique a pasta {}'.format(gen_data))
 
