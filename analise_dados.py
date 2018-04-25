@@ -138,7 +138,7 @@ def create_log():
             df.to_csv(log_pivot, header=True, encoding=get_os())
 
 
-    print('Arquivos Gerados com Sucesso, Verifique a pasta {}'.format(gen_data))
+    print('Arquivos Gerados com Sucesso, Verifique a pasta {}'.format(rel_data))
 
 
 if __name__ == '__main__':
