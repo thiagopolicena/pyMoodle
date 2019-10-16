@@ -8,30 +8,34 @@ PyMoodle
 
 ## Getting Started
 
-use o pip package manager do python para instalar.
-abra o terminal e digite.
+Use o pip package manager do python para instalar.
+
+Abra o terminal e digite:
 
 ```
 pip install -U --user pip
 ```
 
-caso voce instale o python global para todos os usuarios voce tera que usar o terminal
-com permissao de administrador.
-Python 3 para Windows
+Caso você instale o python global para todos os usuários voce terá que usar o terminal
+com permissão de administrador.
+
+Python 3 para Windows:
 
 ```
 https://www.python.org/ftp/python/3.6.5/python-3.6.5-amd64-webinstall.exe
 ```
 
-Python 3 para Linux
+Python 3 para Linux:
 
 ```
 sudo apt install python3 python3-pip python3-virtualenv
 ```
 
-### Prerequisites
+### System rsequirements
 
-Muito importante o arquivo requirements.txt contem as bibliotecas que deveram ser instaladas, para instalar use o pip com a flag -r
+Muito importante o arquivo "requirements.txt" contem as bibliotecas que deverão ser instaladas.
+
+Para instalar use o pip com a flag -r, conforme comando a seguir:
 
 ```
 pip install -r requirements.txt
@@ -39,13 +43,13 @@ pip install -r requirements.txt
 
 ### Installing
 
-Para usar coloque todos os arquivos .csv dentro da pasta do arquivo analise_dados.py
+Para usar coloque todos os arquivos ".csv" dentro da pasta do arquivo "analise_dados.py".
 
 ```
 python3 analise_dados.py
 ```
 
-ou se estiver usando ambiente virtual como o virualenv
+Ou se estiver usando o ambiente virtual como o virtualenv
 
 ```
 python analise_dados.py
